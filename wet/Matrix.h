@@ -3,10 +3,10 @@
 class Matrix{
     unsigned int rowNum = 0;
     unsigned int colNum = 0;
-    int* matrix = nullptr;
+    int* matrix = nullptr;//const?
     
     public:
-        explicit Matrix(unsigned rowNum = 0, unsigned colNum = 0, int initValue = 0);///do we need explicit?
+        explicit Matrix(unsigned int rowNum = 0, unsigned int colNum = 0, int initValue = 0);///do we need explicit?
         Matrix(const Matrix& other);
         Matrix& Matrix::operator=(const Matrix& s);
         ~Matrix();
