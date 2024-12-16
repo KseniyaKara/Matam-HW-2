@@ -17,7 +17,7 @@ colNum(colNum){
 
 Matrix::Matrix(const Matrix& other):
 rowNum(other.rowNum),
-colNum(other.colNum) {
+colNum(other.colNum){
     int* matrix = new int[rowNum * colNum];
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = other.matrix[i];
@@ -26,4 +26,17 @@ colNum(other.colNum) {
 
 Matrix::~Matrix() {
     delete[] matrix;
+}
+
+Matrix& Matrix::operator=(const Matrix& s){
+    if (this == &s){
+        return *this;
+    }
+    rowNum(s.rowNum);
+    colNum(s.colNum);
+    delete[] matrix;
+    int* matrix = new int[rowNum * colNum];
+    for (int i = 0; i < rowNum*colNum; i++) {
+        matrix[i] = s.matrix[i];
+    }
 }
