@@ -24,3 +24,6 @@ colNum(other.colNum) {
     }
 }
 
+Matrix::~Matrix() {
+    delete[] matrix;
+}
