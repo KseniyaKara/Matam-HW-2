@@ -6,8 +6,15 @@ class Matrix{
     int* matrix = nullptr;
     
     public:
-        Matrix(unsigned rowNum = 0, unsigned colNum = 0, int initValue = 0);
+        explicit Matrix(unsigned rowNum = 0, unsigned colNum = 0, int initValue = 0);///do we need explicit?
         Matrix(const Matrix& other);
         Matrix& Matrix::operator=(const Matrix& s);
         ~Matrix();
+        int getRowNum();
+        int getColNum();
+        void setColNum(int col);
+        void setRowNum(int row);
+        int* Matrix::operator()(int row, int col);///??
+        bool Matrix::operator==(const Matrix& other);
+        bool Matrix::operator!=(const Matrix& other);/// can we write this line outside the class?
 };
