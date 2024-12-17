@@ -45,7 +45,7 @@ Matrix MataMvidia::operator[](int index) {
     return filmFrames[index];
 }
 
-MataMvidia& MataMvidia::operator+=(MataMvidia& other) {
+MataMvidia& MataMvidia::operator+=(const MataMvidia& other) {
     unsigned int newFilmLength = filmLength + other.filmLength;
     Matrix* newFilm = new Matrix[filmLength + other.filmLength];
     unsigned int i = 0;
@@ -55,6 +55,21 @@ MataMvidia& MataMvidia::operator+=(MataMvidia& other) {
     for (; i < other.filmLength; ++i) {
         newFilm[i] = other.filmFrames[i];
     }
+    delete[] filmFrames;
+    filmFrames = newFilm;
+    filmLength = newFilmLength;
+
+    return *this;
+}
+
+MataMvidia& MataMvidia::operator+=(const Matrix& matrix) {
+    unsigned int newFilmLength = filmLength + 1;
+    Matrix* newFilm = new Matrix[filmLength + 1];
+    unsigned int i = 0;
+    for (; i < filmLength; ++i) {
+        newFilm[i] = filmFrames[i];
+    }
+    newFilm[i] = matrix;
     delete[] filmFrames;
     filmFrames = newFilm;
     filmLength = newFilmLength;
