@@ -50,10 +50,16 @@ int main() {
     film += Matrix(2, 2, 3);
     std::cout << "After adding a new frame:\n" << film;
 
-    // 9. Merge two films
-    MataMvidia film2(2, "Sequel", "Jane Doe", frames);
-    MataMvidia mergedFilm = film + film2;
-    std::cout << "Merged Film:\n" << mergedFilm;
+    MataMvidia film("Action Movie", "John Doe", frames, 2);  // Create a Film object
+
+    // Output film information
+    std::cout << "Film name: Action Movie" << std::endl;
+    std::cout << "Author: John Doe" << std::endl;
+    std::cout << "Film length: " << 2 << " frames" << std::endl;
+    std::cout << "Frame 1:" << std::endl;
+    std::cout << frames[0] << std::endl;
+    std::cout << "Frame 2:" << std::endl;
+    std::cout << frames[1] << std::endl;
 
     return 0;
 }
