@@ -1,8 +1,6 @@
 #include "Matrix.h"
-
 #include <iostream>
-#include <ostream>
-
+#include <cmath>
 #include "Utilities.h"
 
 Matrix::Matrix(unsigned int rowNum, unsigned int colNum, int initValue):
@@ -66,6 +64,14 @@ unsigned int Matrix::getColNum() {
 // void setRowNum(int row) {
 //
 // }
+
+int* Matrix::getMatrix() const{
+    return matrix;
+}
+
+int* Matrix::getMatrix() {
+    return matrix;
+}
 
 void Matrix::sizeMatch(const Matrix& other) const {
     if(rowNum != other.rowNum || colNum != other.colNum) {
@@ -175,17 +181,18 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-static unsigned int CalcProbeniousNorm(const Matrix& matrix);
+static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
     unsigned int norm = 0;
-    for (int i = 0; i < matrix.getRowNum() ; ++i) {
+    for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
             norm += matrix(i,j) * matrix(j,j);
         }
     }
     norm = sqrt(norm);
     return norm;
-}
 
+}
+    
 Matrix& Transpose(Matrix& matrix) {
     Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
     for (int i = 0; i < matrix.getRowNum() ; ++i) {
@@ -194,4 +201,42 @@ Matrix& Transpose(Matrix& matrix) {
         }
     }
     return newMatrix;
+}
+
+static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
+int* ignoredColumnsMask) {
+    int det = 0;
+    int rowNum = matrix.getRowNum();
+    int colNum = matrix.getColNum();
+    int pivot = 0;
+    int pivotSign = 0;
+    if(rowNum == 2) {
+        int* matrixArray = matrix.getMatrix();
+        int* detElements[4]; 
+        int count = 0;
+        for(int i = 0; i < rowNum; ++i) {
+            for(int j = 0; j < colNum; ++j) {
+                if(!ignoredRowsMask[i] && !ignoredColumnsMask[j]) {
+                    detElements[matrixArray[i * colNum + j]];
+                    ++count;
+                }
+            }
+        }
+        return matrixArray[0] * matrixArray[3] - matrixArray[2] * matrixArray[1];
+    }
+    pivotSign = ((row + col) %2 == 0) * 1 +  ((row + col) %2 != 0) * -1;
+    pivot = pivotSign * matrix.getMatrix()[row * colNum + col];
+    ignoredRowsMask[row] = 1;
+    ignoredColumnsMask[col] = 1;
+    det += pivot * CalcDeterminantRec(matrix, (row + 1) % rowNum, (col + 1) * colNum, \
+    ignoredRowsMask, ignoredColumnsMask);
+    ignoredColumnsMask[col] = 0;
+    ignoredRowsMask[row] = 0;
+}
+
+static int CalcDeterminant(const Matrix& matrix) {
+    int* ignoredColumnsMask = new int[matrix.getRowNum()]();
+    int* ignoredRowsMask = new int[matrix.getColNum()]();
+    matrix.isSquare();
+    CalcDeterminantRec(matrix, 0, 0, ignoredRowsMask, ignoredColumnsMask);
 }
