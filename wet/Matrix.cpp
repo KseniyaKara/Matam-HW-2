@@ -20,10 +20,7 @@ colNum(colNum){
 Matrix::Matrix(const Matrix& other):
 rowNum(other.rowNum),
 colNum(other.colNum){
-    int* matrix = new int[rowNum * colNum];
-    if (!matrix) {
-        std::cout << "Memory allocation failed!" << std::endl;
-    }
+    matrix = new int[rowNum * colNum];
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = other.matrix[i];
     }
@@ -37,16 +34,18 @@ Matrix& Matrix::operator=(const Matrix& s){
     if (this == &s){
         return *this;
     }
-    rowNum(s.rowNum);
-    colNum(s.colNum);
+    rowNum = s.rowNum;
+    colNum = s.colNum;
     delete[] matrix;
-    int* matrix = new int[rowNum * colNum];
+    matrix = new int[rowNum * colNum];
     if (!matrix) {
         std::cout << "Memory allocation failed!" << std::endl;
     }
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = s.matrix[i];
     }
+
+    return *this;
 }
 unsigned int Matrix::getRowNum() const{
     return rowNum;
@@ -58,7 +57,7 @@ unsigned int Matrix::getRowNum() {
 unsigned int Matrix::getColNum() const {
     return colNum;
 }
-unsgned int Matrix::getColNum() {
+unsigned int Matrix::getColNum() {
     return colNum;
 }
 // void setColNum(int col) {
