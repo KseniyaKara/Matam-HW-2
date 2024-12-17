@@ -119,6 +119,39 @@ Matrix operator-(const Matrix& matrix, const Matrix& other) {
     return Matrix(matrix) -= other;
 }
 
+Matrix operator*(const Matrix& matrix, const Matrix& other) {
+    if(matrix.getColNum() != other.getRowNum()) {
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
+    int n = matrix.getColNum();
+    int m = matrix.getRowNum();
+    int q = other.getColNum();
+
+    Matrix result(m, q, 0);
+
+    for(int i = 0; i < m; ++i) {
+        for(int j = 0; j < q; ++i) {
+            int value = CalcSingleElementMult(matrix, other, i, j);
+            result(i, j) =  value;
+        }   
+    }
+}
+
+Matrix& Matrix::operator*=(const Matrix& other) {
+    return *this = *this * other;
+}
+
+static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
+    int n = matrix.getColNum();
+    int m = other.getColNum();
+    int result = 0;
+    for(int k = 0; k < n; ++k) {
+        result += matrix(row, k) * other(k, col);
+    }
+    return result;
+}
+
+
 const int& Matrix::operator()(int row, int col) const{
     return matrix[row * col + col];
 }
