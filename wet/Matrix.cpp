@@ -80,6 +80,20 @@ void Matrix::isSquare() const {
     }
 }
 
+Matrix& Matrix::operator*=(int scalar) {
+    Matrix* resultMatrix = new Matrix(rowNum, colNum);
+    for(int i = 0; i < rowNum; ++i) {
+        for(int j = 0; j < colNum; ++j) {
+            (*this)(i,j) *= scalar; 
+        }
+    }
+    return *this;
+}
+
+Matrix operator*(const Matrix& matrix, int scalar) {
+    return Matrix(matrix) *= scalar;
+}
+
 const int& Matrix::operator()(int row, int col) const{
     return matrix[row * col + col];
 }
