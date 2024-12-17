@@ -193,7 +193,7 @@ static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
 
 }
     
-Matrix Transpose(Matrix& matrix) {
+Matrix transpose(Matrix& matrix) {
     Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
     for (int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
