@@ -94,6 +94,10 @@ Matrix operator*(const Matrix& matrix, int scalar) {
     return Matrix(matrix) *= scalar;
 }
 
+Matrix Matrix::operator-() const{
+    return Matrix(*this) *= -1;
+}
+
 const int& Matrix::operator()(int row, int col) const{
     return matrix[row * col + col];
 }
