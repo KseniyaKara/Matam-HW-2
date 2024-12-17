@@ -10,7 +10,7 @@ colNum(colNum){
     if (!matrix) {
         std::cout << "Memory allocation failed!" << std::endl;
     }
-    for (int i = 0; i < rowNum*colNum; i++) {
+    for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = initValue;
     }
 }
@@ -19,7 +19,7 @@ Matrix::Matrix(const Matrix& other):
 rowNum(other.rowNum),
 colNum(other.colNum){
     matrix = new int[rowNum * colNum];
-    for (int i = 0; i < rowNum*colNum; i++) {
+    for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = other.matrix[i];
     }
 }
@@ -159,11 +159,11 @@ Matrix& Matrix::operator*=(const Matrix& other) {
 }
 
 const int& Matrix::operator()(int row, int col) const{
-    return matrix[row * col + col];
+    return matrix[row * colNum + col];
 }
 
 int& Matrix::operator()(int row, int col){
-    return matrix[row * col + col];
+    return matrix[row * colNum + col];
 }
 
  bool operator==(const Matrix& matrix, const Matrix& other){
