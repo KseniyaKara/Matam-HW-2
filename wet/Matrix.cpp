@@ -7,9 +7,6 @@ Matrix::Matrix(int rowNum, int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
     matrix = new int[rowNum * colNum];
-    if (!matrix) {
-        std::cout << "Memory allocation failed!" << std::endl;
-    }
     for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = initValue;
     }
@@ -36,9 +33,6 @@ Matrix& Matrix::operator=(const Matrix& s){
     colNum = s.colNum;
     delete[] matrix;
     matrix = new int[rowNum * colNum];
-    if (!matrix) {
-        std::cout << "Memory allocation failed!" << std::endl;
-    }
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = s.matrix[i];
     }
@@ -146,7 +140,7 @@ Matrix operator*(const Matrix& matrix, const Matrix& other) {
     Matrix result(m, q, 0);
 
     for(int i = 0; i < m; ++i) {
-        for(int j = 0; j < q; ++i) {
+        for(int j = 0; j < q; ++j) {
             int value = CalcSingleElementMult(matrix, other, i, j);
             result(i, j) =  value;
         }   

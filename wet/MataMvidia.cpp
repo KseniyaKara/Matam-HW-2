@@ -1,13 +1,12 @@
 #include "MataMvidia.h"
 #include <iostream>
 
-MataMvidia::MataMvidia( const std::string& filmName, const std::string& authorName, Matrix* filmFrames, int filmLength):
+MataMvidia::MataMvidia( const std::string& filmName, const std::string& authorName, Matrix* filmInput, int filmLength):
  filmName(filmName), authorName(authorName), filmLength(filmLength){
     filmFrames = new Matrix[filmLength];
     for (int i = 0; i < filmLength; i++) {
-        filmFrames[i] = filmFrames[i];
+        filmFrames[i] = filmInput[i];
     }
-    delete[] filmFrames;////??????
 }
 
 MataMvidia::MataMvidia(const MataMvidia& other){
@@ -21,17 +20,17 @@ MataMvidia::MataMvidia(const MataMvidia& other){
     }
 }
 
-MataMvidia& MataMvidia::operator=(const MataMvidia& s){
-    if (this == &s){
+MataMvidia& MataMvidia::operator=(const MataMvidia& other){
+    if (this == &other){
         return *this;
     }
-    filmLength = s.filmLength;
-    filmName = s.filmName;
-    authorName = s.authorName;
+    filmLength = other.filmLength;
+    filmName = other.filmName;
+    authorName = other.authorName;
     delete[] filmFrames;
     filmFrames = new Matrix[filmLength];
     for (int i = 0; i < filmLength; i++) {
-        filmFrames[i] = s.filmFrames[i];
+        filmFrames[i] = other.filmFrames[i];
     }
     return *this;
 }
