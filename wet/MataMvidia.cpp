@@ -14,6 +14,7 @@ MataMvidia::MataMvidia(const MataMvidia& other){
     filmLength = other.filmLength;
     filmName = other.filmName;
     authorName = other.authorName;
+
     filmFrames = new Matrix[filmLength];
     for (unsigned int i = 0; i < filmLength; i++) {
         filmFrames[i] = other.filmFrames[i];
