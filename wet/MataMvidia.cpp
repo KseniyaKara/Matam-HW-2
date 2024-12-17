@@ -1,6 +1,7 @@
-#include "MataMvdia.h"
+#include "MataMvidia.h"
+#include <iostream>
 
-Film::Film(const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther, unsigned int filmLength):
+MataMvidia::MataMvidia(const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther, unsigned int filmLength):
 filmName(filmName), authorName(authorName), filmLength(filmLength){
     filmFrames = new Matrix[filmLength];
     for (unsigned int i = 0; i < filmLength; i++) {
@@ -9,7 +10,7 @@ filmName(filmName), authorName(authorName), filmLength(filmLength){
     delete[] filmFramesOther;////??????
 }
 
-Film::Film(const Film& other) : filmName(other.filmName),
+MataMvidia::MataMvidia(const MataMvidia& other) : filmName(other.filmName),
 authorName(other.authorName), filmLength(other.filmLength){
     filmFrames = new Matrix[filmLength];
     for (unsigned int i = 0; i < filmLength; i++) {
@@ -17,7 +18,7 @@ authorName(other.authorName), filmLength(other.filmLength){
     }
 }
 
-Film& Film::operator=(const Film& s): filmName(s.filmName),
+MataMvidia& MataMvidia::operator=(const MataMvidia& s): filmName(s.filmName),
 authorName(s.authorName), filmLength(s.filmLength) {
     if (this == &s){
         return *this;
@@ -30,9 +31,14 @@ authorName(s.authorName), filmLength(s.filmLength) {
 }
 
 
-Film::~Film() {
+MataMvidia::~MataMvidia() {
     delete[]filmFrames;
 }
 
-const Matrix& Matrix::operator[](int index) const{}
-Matrix& Matrix::operator[](int index){}
+// const Matrix& operator[](int index) const{}
+Matrix MataMvidia::operator[](int index) {
+    if (index >=filmLength() || index < 0) {
+        std::cout<<("Bad index");
+    }
+    return filmFrames[index];
+}
