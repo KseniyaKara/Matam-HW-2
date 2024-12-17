@@ -5,10 +5,18 @@ filmName(filmName), authorName(authorName), filmLength(filmLength){
     for (unsigned int i = 0; i < filmLength; i++) {
         filmFrames[i] = filmFramesOther[i];
     }
+    delete[] filmFramesOther;////??????
 }
 
-Film::Film(const Film& other){}
-Film& Film::operator=(const Film& s){}
+Film::Film(const Film& other) : filmName(other.filmName),
+authorName(other.authorName), filmLength(other.filmLength){
+    filmFrames = new Matrix[filmLength];
+    for (unsigned int i = 0; i < filmLength; i++) {
+        filmFrames[i] = other.filmFrames[i];
+    }
+}
+
+
 Film::~Film() {
     delete[]filmFrames;
 }
