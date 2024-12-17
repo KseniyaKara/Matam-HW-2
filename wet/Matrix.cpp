@@ -147,6 +147,7 @@ Matrix operator*(const Matrix& matrix, const Matrix& other) {
             result(i, j) =  value;
         }   
     }
+    return result;
 }
 
 Matrix& Matrix::operator*=(const Matrix& other) {
@@ -236,12 +237,12 @@ int* ignoredColumnsMask) {
     int pivotSign = 0;
     if(rowNum == 2) {
         int* matrixArray = matrix.getMatrix();
-        int* detElements[4]; 
+        int detElements[4]; 
         int count = 0;
         for(int i = 0; i < rowNum; ++i) {
             for(int j = 0; j < colNum; ++j) {
                 if(!ignoredRowsMask[i] && !ignoredColumnsMask[j]) {
-                    detElements[matrixArray[i * colNum + j]];
+                    detElements[count] = matrixArray[i * colNum + j];
                     ++count;
                 }
             }
