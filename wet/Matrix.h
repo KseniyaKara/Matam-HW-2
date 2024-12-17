@@ -2,19 +2,19 @@
 #include <ostream>
 
 class Matrix{
-    unsigned int rowNum = 0;
-    unsigned int colNum = 0;
+    int rowNum = 0;
+    int colNum = 0;
     int* matrix = nullptr;//const?
     
     public:
-        explicit Matrix(unsigned int rowNum = 0, unsigned int colNum = 0, int initValue = 0);///do we need explicit?
+        explicit Matrix(int rowNum = 0, int colNum = 0, int initValue = 0);///do we need explicit?
         Matrix(const Matrix& other);
         Matrix& operator=(const Matrix& s);
         ~Matrix();
-        unsigned int getRowNum() const;
-        unsigned int getRowNum();
-        unsigned int getColNum() const;
-        unsigned int getColNum();
+        int getRowNum() const;
+        int getRowNum();
+        int getColNum() const;
+        int getColNum();
         int* getMatrix() const;
         int* getMatrix();
         // void setColNum(int col);
@@ -34,7 +34,7 @@ class Matrix{
         static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
         int* ignoredColumnsMask) ;
         static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col);
-        static unsigned int CalcProbeniousNorm(const Matrix& matrix);
+        static int CalcProbeniousNorm(const Matrix& matrix);
         Matrix transpose() const;
         Matrix rotateClockwise() const;
         Matrix rotateCounterClockwise() const;

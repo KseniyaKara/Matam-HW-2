@@ -3,7 +3,7 @@
 #include <cmath>
 #include "Utilities.h"
 
-Matrix::Matrix(unsigned int rowNum, unsigned int colNum, int initValue):
+Matrix::Matrix(int rowNum, int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
     int* matrix = new int[rowNum * colNum];
@@ -45,17 +45,17 @@ Matrix& Matrix::operator=(const Matrix& s){
 
     return *this;
 }
-unsigned int Matrix::getRowNum() const{
+int Matrix::getRowNum() const{
     return rowNum;
 }
-unsigned int Matrix::getRowNum() {
+int Matrix::getRowNum() {
     return rowNum;
 }
 
-unsigned int Matrix::getColNum() const {
+int Matrix::getColNum() const {
     return colNum;
 }
-unsigned int Matrix::getColNum() {
+int Matrix::getColNum() {
     return colNum;
 }
 // void setColNum(int col) {
@@ -105,8 +105,8 @@ Matrix Matrix::operator-() const{
 
 Matrix& Matrix::operator+=(const Matrix& other){
     sizeMatch(other);
-    unsigned int matrixElementNum = rowNum * colNum;
-    for(unsigned int i = 0; i < matrixElementNum; ++i) {
+    int matrixElementNum = rowNum * colNum;
+    for(int i = 0; i < matrixElementNum; ++i) {
         matrix[i] += other.matrix[i]; 
     }
     return *this;
@@ -125,8 +125,8 @@ Matrix operator-(const Matrix& matrix, const Matrix& other) {
 }
 
 static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
-    unsigned int n = matrix.getColNum();
-    unsigned int m = other.getColNum();
+    int n = matrix.getColNum();
+    int m = other.getColNum();
     int result = 0;
     for(int k = 0; k < n; ++k) {
         result += matrix(row, k) * other(k, col);
@@ -138,9 +138,9 @@ Matrix operator*(const Matrix& matrix, const Matrix& other) {
     if(matrix.getColNum() != other.getRowNum()) {
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
-    unsigned int n = matrix.getColNum();
-    unsigned int m = matrix.getRowNum();
-    unsigned int q = other.getColNum();
+    int n = matrix.getColNum();
+    int m = matrix.getRowNum();
+    int q = other.getColNum();
 
     Matrix result(m, q, 0);
 
@@ -181,8 +181,8 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
-    unsigned int norm = 0;
+static int CalcProbeniousNorm(const Matrix& matrix) {
+    int norm = 0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
             norm += matrix(i,j) * matrix(j,j);
@@ -233,8 +233,8 @@ Matrix Matrix::rotateCounterClockwise() const{
 static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
 int* ignoredColumnsMask) {
     int det = 0;
-    unsigned int rowNum = matrix.getRowNum();
-    unsigned int colNum = matrix.getColNum();
+    int rowNum = matrix.getRowNum();
+    int colNum = matrix.getColNum();
     int pivot = 0;
     int pivotSign = 0;
     if(rowNum == 2) {

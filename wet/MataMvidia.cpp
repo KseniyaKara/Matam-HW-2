@@ -1,10 +1,10 @@
 #include "MataMvidia.h"
 #include <iostream>
 
-MataMvidia::MataMvidia(unsigned int filmLength, const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther):
+MataMvidia::MataMvidia(int filmLength, const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther):
 filmLength(filmLength), filmName(filmName), authorName(authorName){
     filmFrames = new Matrix[filmLength];
-    for (unsigned int i = 0; i < filmLength; i++) {
+    for (int i = 0; i < filmLength; i++) {
         filmFrames[i] = filmFramesOther[i];
     }
     delete[] filmFramesOther;////??????
@@ -16,7 +16,7 @@ MataMvidia::MataMvidia(const MataMvidia& other){
     authorName = other.authorName;
 
     filmFrames = new Matrix[filmLength];
-    for (unsigned int i = 0; i < filmLength; i++) {
+    for (int i = 0; i < filmLength; i++) {
         filmFrames[i] = other.filmFrames[i];
     }
 }
@@ -49,9 +49,9 @@ Matrix MataMvidia::operator[](unsigned index) {
 }
 
 MataMvidia& MataMvidia::operator+=(const MataMvidia& other) {
-    unsigned int newFilmLength = filmLength + other.filmLength;
+    int newFilmLength = filmLength + other.filmLength;
     Matrix* newFilm = new Matrix[newFilmLength];
-    unsigned int i = 0;
+    int i = 0;
     for (; i < filmLength; ++i) {
         newFilm[i] = filmFrames[i];
     }
@@ -65,9 +65,9 @@ MataMvidia& MataMvidia::operator+=(const MataMvidia& other) {
 }
 
 MataMvidia& MataMvidia::operator+=(const Matrix& matrix) {
-    unsigned int newFilmLength = filmLength + 1;
+    int newFilmLength = filmLength + 1;
     Matrix* newFilm = new Matrix[newFilmLength];
-    unsigned int i = 0;
+    int i = 0;
     for (; i < filmLength; ++i) {
         newFilm[i] = filmFrames[i];
     }
@@ -80,7 +80,7 @@ MataMvidia& MataMvidia::operator+=(const Matrix& matrix) {
 
 MataMvidia MataMvidia::operator+(const MataMvidia& other) {
     Matrix* newFilm = new Matrix[filmLength + other.filmLength];
-    unsigned int i = 0;
+    int i = 0;
     for (; i < filmLength; ++i) {
         newFilm[i] = filmFrames[i];
     }
