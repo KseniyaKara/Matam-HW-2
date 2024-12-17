@@ -247,7 +247,7 @@ int* ignoredColumnsMask) {
                 }
             }
         }
-        return matrixArray[0] * matrixArray[3] - matrixArray[2] * matrixArray[1];
+        return detElements[0] * detElements[3] - detElements[2] * detElements[1];
     }
     pivotSign = ((row + col) %2 == 0) * 1 +  ((row + col) %2 != 0) * -1;
     pivot = pivotSign * matrix.getMatrix()[row * colNum + col];
@@ -257,13 +257,14 @@ int* ignoredColumnsMask) {
     ignoredRowsMask, ignoredColumnsMask);
     ignoredColumnsMask[col] = 0;
     ignoredRowsMask[row] = 0;
+    return det;
 }
 
 static int CalcDeterminant(const Matrix& matrix) {
     int* ignoredColumnsMask = new int[matrix.getRowNum()]();
     int* ignoredRowsMask = new int[matrix.getColNum()]();
     matrix.isSquare();
-    CalcDeterminantRec(matrix, 0, 0, ignoredRowsMask, ignoredColumnsMask);
+    return CalcDeterminantRec(matrix, 0, 0, ignoredRowsMask, ignoredColumnsMask);
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
