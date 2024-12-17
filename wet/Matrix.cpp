@@ -62,6 +62,18 @@ int Matrix::getColNum() {
 //
 // }
 
+void Matrix::sizeMatch(const Matrix& other) const {
+    if(rowNum != other.rowNum || colNum != other.colNum) {
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
+}
+
+void Matrix::isSquare() const {
+    if(rowNum != colNum) {
+        exitWithError(MatamErrorType::NotSquareMatrix);
+    }
+}
+
 const int& Matrix::operator()(int row, int col) const{
     return matrix(row * col + col);
 }
