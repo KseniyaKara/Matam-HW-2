@@ -41,6 +41,7 @@ class Matrix{
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);
     Matrix operator*(const Matrix& matrix, int scalar);
+    Matrix operator*(int scalar, const Matrix& matrix);
     Matrix operator+(const Matrix& matrix, const Matrix& other);
     Matrix operator-(const Matrix& matrix, const Matrix& other);
     Matrix operator*(const Matrix& matrix, const Matrix& other);

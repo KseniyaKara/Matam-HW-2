@@ -98,6 +98,10 @@ Matrix operator*(const Matrix& matrix, int scalar) {
     return Matrix(matrix) *= scalar;
 }
 
+Matrix operator*(int scalar, const Matrix& matrix) {
+    return Matrix(matrix) *= scalar;
+}
+
 Matrix Matrix::operator-() const{
     return Matrix(*this) *= -1;
 }
