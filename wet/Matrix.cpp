@@ -76,10 +76,10 @@ void Matrix::isSquare() const {
 
 Matrix& Matrix::operator*=(int scalar) {
     Matrix* resultMatrix = new Matrix(rowNum, colNum);
-
-    int matrixElementNum = rowNum * colNum;
-    for(int i = 0; i < matrixElementNum; ++i) {
-        resultMatrix[i] = scalar * matrix[i]; 
+    for(int i = 0; i < rowNum; ++i) {
+        for(int j = 0; j < colNum; ++j) {
+            (*this)(i,j) *= scalar; 
+        }
     }
     return *this;
 }
