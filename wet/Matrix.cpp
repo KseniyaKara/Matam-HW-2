@@ -81,3 +81,9 @@ const int& Matrix::operator()(int row, int col) const{
 bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
+unsigned int normFrobenious(const Matrix& matrix) {
+    unsigned int norm = 0;
+}
+Matrix& Transpose(Matrix& matrix) {
+
+}

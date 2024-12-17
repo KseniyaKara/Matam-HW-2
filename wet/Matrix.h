@@ -38,3 +38,4 @@ class Matrix{
     Matrix operator-(const Matrix& matrix, const Matrix& other);
     Matrix operator*(const Matrix& matrix, const Matrix& other);
     unsigned int normFrobenious(const Matrix& matrix);
+    Matrix& Transpose(Matrix& matrix);
