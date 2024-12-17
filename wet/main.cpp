@@ -43,7 +43,7 @@ int main() {
 
     // 7. Create a film with frames
     Matrix frames[2] = { Matrix(2, 2, 1), Matrix(2, 2, 2) };
-    MataMvidia film("Matrix Adventure", "John Doe", frames, 2);
+    MataMvidia film(2, "Matrix Adventure", "John Doe", frames);
     std::cout << film << std::endl;
 
     // 8. Add a new frame
@@ -51,7 +51,7 @@ int main() {
     std::cout << "After adding a new frame:\n" << film;
 
     // 9. Merge two films
-    MataMvidia film2("Sequel", "Jane Doe", frames, 2);
+    MataMvidia film2(2, "Sequel", "Jane Doe", frames);
     MataMvidia mergedFilm = film + film2;
     std::cout << "Merged Film:\n" << mergedFilm;
 
