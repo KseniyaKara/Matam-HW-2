@@ -3,6 +3,8 @@
 #include <iostream>
 #include <ostream>
 
+#include "Utilities.h"
+
 Matrix::Matrix(unsigned int rowNum, unsigned int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
@@ -59,3 +61,7 @@ int Matrix::getColNum() {
 // void setRowNum(int row) {
 //
 // }
+
+const int& Matrix::operator()(int row, int col) const{
+    return matrix[row * col + col];
+}
