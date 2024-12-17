@@ -193,14 +193,41 @@ static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
 
 }
     
-Matrix Transpose(Matrix& matrix) {
-    Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
-    for (int i = 0; i < matrix.getRowNum() ; ++i) {
-        for (int j = 0; j < matrix.getColNum(); ++j) {
-            newMatrix(j,i) = matrix(i,j);
+Matrix Matrix::transpose() const{
+    Matrix newMatrix((*this).getColNum(), (*this).getRowNum(), 0);
+    for (int i = 0; i < (*this).getRowNum() ; ++i) {
+        for (int j = 0; j < (*this).getColNum(); ++j) {
+            newMatrix(j,i) = (*this)(i,j);
         }
     }
     return newMatrix;
+}
+
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+Matrix Matrix::rotateClockwise() const{
+    Matrix rotated = (*this).transpose();
+    for (int j = 0; j < colNum; ++j) {
+        for (int i = 0; i < rowNum / 2; ++i) {
+            swap((rotated)(i, j), (rotated)(rowNum -1 - i, j));
+        }
+    }
+    return rotated;
+}
+
+Matrix Matrix::rotateCounterClockwise() const{
+    Matrix rotated = (*this).transpose();
+    for (int i = 0; i < rotated.rowNum; ++i) {
+        for (int j = 0; j < rotated.colNum / 2; ++j) {
+            swap(rotated(i, j), rotated(i, rotated.colNum - j - 1));
+        }
+    }
+    return rotated;
+
 }
 
 static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
