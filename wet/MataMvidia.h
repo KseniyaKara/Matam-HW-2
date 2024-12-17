@@ -10,12 +10,12 @@ class MataMvidia {
     public:
         MataMvidia(const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther, unsigned int filmLength);
         MataMvidia(const MataMvidia& other);
-        MataMvidia& MataMvidia::operator=(const MataMvidia& s);
+        MataMvidia& operator=(const MataMvidia& s);
         ~MataMvidia();
         // const Matrix& Matrix::operator[](int index) const;
-        Matrix MataMvidia::operator[](int index);
-        MataMvidia& MataMvidia::operator+=(const MataMvidia& other);
-        MataMvidia& MataMvidia::operator+=(const Matrix& other);
-        MataMvidia MataMvidia::operator+(const MataMvidia& other);
+        Matrix operator[](int index);
+        MataMvidia& operator+=(const MataMvidia& other);
+        MataMvidia& operator+=(const Matrix& other);
+        MataMvidia operator+(const MataMvidia& other);
         friend std::ostream& operator<<(std::ostream& os, const MataMvidia& film);
 };
