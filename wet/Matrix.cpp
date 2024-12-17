@@ -21,6 +21,9 @@ Matrix::Matrix(const Matrix& other):
 rowNum(other.rowNum),
 colNum(other.colNum){
     int* matrix = new int[rowNum * colNum];
+    if (!matrix) {
+        std::cout << "Memory allocation failed!" << std::endl;
+    }
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = other.matrix[i];
     }
@@ -38,6 +41,9 @@ Matrix& Matrix::operator=(const Matrix& s){
     colNum(s.colNum);
     delete[] matrix;
     int* matrix = new int[rowNum * colNum];
+    if (!matrix) {
+        std::cout << "Memory allocation failed!" << std::endl;
+    }
     for (int i = 0; i < rowNum*colNum; i++) {
         matrix[i] = s.matrix[i];
     }
@@ -104,7 +110,7 @@ unsigned int normFrobenious(const Matrix& matrix) {
 
 Matrix& Transpose(Matrix& matrix) {
     Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
-    for (int i = 0; i <matrix.getRowNum() ; ++i) {
+    for (int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
             newMatrix(j,i) = matrix(i,j);
         }
