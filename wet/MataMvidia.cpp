@@ -1,8 +1,8 @@
 #include "MataMvidia.h"
 #include <iostream>
 
-MataMvidia::MataMvidia(const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther, unsigned int filmLength):
-filmName(filmName), authorName(authorName), filmLength(filmLength){
+MataMvidia::MataMvidia(unsigned int filmLength, const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther):
+filmLength(filmLength), filmName(filmName), authorName(authorName){
     filmFrames = new Matrix[filmLength];
     for (unsigned int i = 0; i < filmLength; i++) {
         filmFrames[i] = filmFramesOther[i];
