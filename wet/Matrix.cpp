@@ -62,9 +62,13 @@ int Matrix::getColNum() {
 //
 // }
 
-const int& Matrix::operator()(int row, int col) const{
+int& Matrix::operator()(int row, int col){
     return matrix(row * col + col);
 }
+const int& Matrix::operator()(int row, int col)const{
+    return matrix(row * col + col);
+}
+
  bool operator==(const Matrix& matrix, const Matrix& other){
     bool equal = true;
     if (matrix.rowNum != other.rowNum || matrix.colNum != other.colNum) {
@@ -84,6 +88,13 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
 unsigned int normFrobenious(const Matrix& matrix) {
     unsigned int norm = 0;
 }
-Matrix& Transpose(Matrix& matrix) {
 
+Matrix& Transpose(Matrix& matrix) {
+    Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
+    for (int i = 0; i <matrix.getRowNum() ; ++i) {
+        for (int j = 0; j < matrix.getColNum(); ++j) {
+            newMatrix(j,i) = matrix(i,j);
+        }
+    }
+    return newMatrix;
 }
