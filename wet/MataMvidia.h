@@ -13,7 +13,7 @@ class MataMvidia {
         MataMvidia& operator=(const MataMvidia& s);
         ~MataMvidia();
         // const Matrix& Matrix::operator[](int index) const;
-        Matrix operator[](unsigned index);
+        Matrix operator[](int index);
         MataMvidia& operator+=(const MataMvidia& other);
         MataMvidia& operator+=(const Matrix& other);
         MataMvidia operator+(const MataMvidia& other);

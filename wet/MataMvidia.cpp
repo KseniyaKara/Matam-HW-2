@@ -30,7 +30,7 @@ MataMvidia& MataMvidia::operator=(const MataMvidia& s){
     authorName = s.authorName;
     delete[] filmFrames;
     filmFrames = new Matrix[filmLength];
-    for (unsigned i = 0; i < filmLength; i++) {
+    for (int i = 0; i < filmLength; i++) {
         filmFrames[i] = s.filmFrames[i];
     }
     return *this;
@@ -41,7 +41,7 @@ MataMvidia::~MataMvidia() {
 }
 
 // const Matrix& operator[](int index) const{}
-Matrix MataMvidia::operator[](unsigned index) {
+Matrix MataMvidia::operator[](int index) {
     if (index >= filmLength || index < 0) {
         std::cout<<("Bad index");
     }
