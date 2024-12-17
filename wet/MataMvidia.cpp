@@ -10,18 +10,20 @@ filmName(filmName), authorName(authorName), filmLength(filmLength){
     delete[] filmFramesOther;////??????
 }
 
-MataMvidia::MataMvidia(const MataMvidia& other) : filmLength(other.filmLength),
-filmName(other.filmName),
-authorName(other.authorName){
+MataMvidia::MataMvidia(const MataMvidia& other){
+    filmLength = other.filmLength;
+    filmName = other.filmName;
+    authorName = other.authorName;
     filmFrames = new Matrix[filmLength];
     for (unsigned int i = 0; i < filmLength; i++) {
         filmFrames[i] = other.filmFrames[i];
     }
 }
 
-MataMvidia& MataMvidia::operator=(const MataMvidia& s): filmLength(s.filmLength),
-filmName(s.filmName),
-authorName(s.authorName){
+MataMvidia& MataMvidia::operator=(const MataMvidia& s){
+    filmLength = s.filmLength;
+    filmName = s.filmName;
+    authorName = s.authorName;
     if (this == &s){
         return *this;
     }

@@ -3,7 +3,6 @@
 #include "Matrix.h"
 
 class MataMvidia {
-    private:
         unsigned int filmLength = 0;
         std::string filmName;
         std::string authorName;
