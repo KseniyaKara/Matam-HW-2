@@ -2,7 +2,6 @@
 #include <string>
 #include "Matrix.h"
 
-
 class MataMvidia {
     private:
         unsigned int filmLength = 0;
@@ -16,4 +15,5 @@ class MataMvidia {
         ~MataMvidia();
         // const Matrix& Matrix::operator[](int index) const;
         Matrix MataMvidia::operator[](int index);
+        MataMvidia& MataMvidia::operator+=(MataMvidia& other);
 };
