@@ -16,4 +16,5 @@ class MataMvidia {
         Matrix MataMvidia::operator[](int index);
         MataMvidia& MataMvidia::operator+=(const MataMvidia& other);
         MataMvidia& MataMvidia::operator+=(const Matrix& other);
+        MataMvidia MataMvidia::operator+(const MataMvidia& other);
 };
