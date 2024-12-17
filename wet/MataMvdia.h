@@ -9,7 +9,7 @@ class Film {
         std::string authorName;
         Matrix* filmFrames = nullptr;
     public:
-        Film(const std::string& filmName, const std::string& authorName, Matrix* filmFrames, unsigned int filmLength);
+        Film(const std::string& filmName, const std::string& authorName, Matrix* filmFramesOther, unsigned int filmLength);
         Film(const Film& other);
         Film& Film::operator=(const Film& s);
         ~Film();
