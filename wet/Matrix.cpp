@@ -183,7 +183,7 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-static int CalcProbeniousNorm(const Matrix& matrix) {
+static int CalcFrobeniousNorm(const Matrix& matrix) {
     int norm = 0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {

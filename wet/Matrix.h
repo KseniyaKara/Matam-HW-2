@@ -34,7 +34,7 @@ class Matrix{
         static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
         int* ignoredColumnsMask) ;
         static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col);
-        static int CalcProbeniousNorm(const Matrix& matrix);
+        static int CalcFrobeniousNorm(const Matrix& matrix);
         Matrix transpose() const;
         Matrix rotateClockwise() const;
         Matrix rotateCounterClockwise() const;
