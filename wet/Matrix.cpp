@@ -174,8 +174,16 @@ int& Matrix::operator()(int row, int col){
 bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
-static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
 
+static unsigned int CalcProbeniousNorm(const Matrix& matrix);
+    unsigned int norm = 0;
+    for (int i = 0; i < matrix.getRowNum() ; ++i) {
+        for (int j = 0; j < matrix.getColNum(); ++j) {
+            norm += matrix(i,j) * matrix(j,j);
+        }
+    }
+    norm = sqrt(norm);
+    return norm;
 }
 
 Matrix& Transpose(Matrix& matrix) {
