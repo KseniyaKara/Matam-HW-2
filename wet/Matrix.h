@@ -15,6 +15,8 @@ class Matrix{
         unsigned int getRowNum();
         unsigned int getColNum() const;
         unsigned int getColNum();
+        int* getMatrix() const;
+        int* getMatrix();
         // void setColNum(int col);
         // void setRowNum(int row);
         int& Matrix::operator()(int row, int col) ;
