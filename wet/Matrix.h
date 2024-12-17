@@ -11,10 +11,10 @@ class Matrix{
         Matrix(const Matrix& other);
         Matrix& Matrix::operator=(const Matrix& s);
         ~Matrix();
-        int getRowNum() const;
-        int getRowNum();
-        int getColNum() const;
-        int getColNum();
+        unsigned int getRowNum() const;
+        unsigned int getRowNum();
+        unsigned int getColNum() const;
+        unsigned int getColNum();
         // void setColNum(int col);
         // void setRowNum(int row);
         int& Matrix::operator()(int row, int col) ;
@@ -31,8 +31,8 @@ class Matrix{
         static int CalcDeterminant(const Matrix matrix);
         static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
         int* ignoredColumnsMask) ;
-        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other);
-        static unsigned int CalcProbeniousNorm(const Matrix& matrix)
+        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col);
+        static unsigned int CalcProbeniousNorm(const Matrix& matrix);
         Matrix& Transpose(Matrix& matrix);
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);
