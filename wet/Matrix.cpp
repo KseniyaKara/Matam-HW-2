@@ -98,6 +98,27 @@ Matrix Matrix::operator-() const{
     return Matrix(*this) *= -1;
 }
 
+Matrix& Matrix::operator+=(const Matrix& other){
+    sizeMatch(other);
+    int matrixElementNum = rowNum * colNum;
+    for(int i = 0; i < matrixElementNum; ++i) {
+        matrix[i] += other.matrix[i]; 
+    }
+    return *this;
+}
+
+Matrix& Matrix::operator-=(const Matrix& other){
+    return *this += -other;
+}
+
+Matrix operator+(const Matrix& matrix, const Matrix& other){
+    return Matrix(matrix) += other;
+}
+
+Matrix operator-(const Matrix& matrix, const Matrix& other) {
+    return Matrix(matrix) -= other;
+}
+
 const int& Matrix::operator()(int row, int col) const{
     return matrix[row * col + col];
 }
