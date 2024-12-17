@@ -62,11 +62,24 @@ int Matrix::getColNum() {
 //
 // }
 
-int& Matrix::operator()(int row, int col){
-    return matrix(row * col + col);
+void Matrix::sizeMatch(const Matrix& other) const {
+    if(rowNum != other.rowNum || colNum != other.colNum) {
+        exitWithError(MatamErrorType::UnmatchedSizes);
+    }
 }
-const int& Matrix::operator()(int row, int col)const{
-    return matrix(row * col + col);
+
+void Matrix::isSquare() const {
+    if(rowNum != colNum) {
+        exitWithError(MatamErrorType::NotSquareMatrix);
+    }
+}
+
+const int& Matrix::operator()(int row, int col) const{
+    return matrix[row * col + col];
+}
+
+int& Matrix::operator()(int row, int col){
+    return matrix[row * col + col];
 }
 
  bool operator==(const Matrix& matrix, const Matrix& other){
