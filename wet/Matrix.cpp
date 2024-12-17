@@ -143,8 +143,8 @@ int& Matrix::operator()(int row, int col){
 bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
-unsigned int normFrobenious(const Matrix& matrix) {
-    unsigned int norm = 0;
+static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
+
 }
 
 Matrix& Transpose(Matrix& matrix) {
