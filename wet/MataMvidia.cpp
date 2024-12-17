@@ -97,8 +97,8 @@ std::ostream& operator<<(std::ostream& os, const MataMvidia& film) {
     os << "Author: " << film.authorName << std::endl;
     int filmLength = film.filmLength;
     for(int i = 0 ; i < filmLength; ++i) {
-        os << "Frame " << i << ":" << film.filmFrames[i];
+        os << std::endl << "Frame " << i << ":" << std::endl << film.filmFrames[i];
     }
-    os << "-----End of Movie -----";
+    os << std::endl << "-----End of Movie-----" << std::endl;
     return os;
 }

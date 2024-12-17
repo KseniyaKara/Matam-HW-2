@@ -266,8 +266,8 @@ int CalcDeterminant(const Matrix& matrix) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
-    os << "|";
     for(int i = 0 ; i < matrix.rowNum; ++i) {
+        os << "|";
         for(int j = 0 ; j < matrix.colNum; ++j) {
             os << matrix(i, j) << "|";
         }
