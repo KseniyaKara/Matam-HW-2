@@ -33,3 +33,6 @@ authorName(s.authorName), filmLength(s.filmLength) {
 Film::~Film() {
     delete[]filmFrames;
 }
+
+const Matrix& Matrix::operator[](int index) const{}
+Matrix& Matrix::operator[](int index){}

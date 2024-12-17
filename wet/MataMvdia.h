@@ -1,6 +1,7 @@
+#pragma once
 #include <string>
 #include "Matrix.h"
-#pragma once
+
 
 class Film {
     private:
@@ -13,5 +14,7 @@ class Film {
         Film(const Film& other);
         Film& Film::operator=(const Film& s);
         ~Film();
+        const Matrix& Matrix::operator[](int index) const;
+        Matrix& Matrix::operator[](int index);
 
 };
