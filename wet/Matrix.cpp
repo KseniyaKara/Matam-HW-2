@@ -86,7 +86,6 @@ void Matrix::isSquare() const {
 }
 
 Matrix& Matrix::operator*=(int scalar) {
-    Matrix* resultMatrix = new Matrix(rowNum, colNum);
     for(int i = 0; i < rowNum; ++i) {
         for(int j = 0; j < colNum; ++j) {
             (*this)(i,j) *= scalar; 
@@ -126,7 +125,6 @@ Matrix operator-(const Matrix& matrix, const Matrix& other) {
 
 static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
     int n = matrix.getColNum();
-    int m = other.getColNum();
     int result = 0;
     for(int k = 0; k < n; ++k) {
         result += matrix(row, k) * other(k, col);
@@ -138,7 +136,6 @@ Matrix operator*(const Matrix& matrix, const Matrix& other) {
     if(matrix.getColNum() != other.getRowNum()) {
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
-    int n = matrix.getColNum();
     int m = matrix.getRowNum();
     int q = other.getColNum();
 
@@ -276,5 +273,5 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
         }
         os << std::endl;
     }
-    return;
+    return os;
 }
