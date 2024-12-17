@@ -127,7 +127,7 @@ Matrix operator-(const Matrix& matrix, const Matrix& other) {
     return Matrix(matrix) -= other;
 }
 
-static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
+int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
     int n = matrix.getColNum();
     int result = 0;
     for(int k = 0; k < n; ++k) {
@@ -183,7 +183,7 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-static int CalcFrobeniousNorm(const Matrix& matrix) {
+int CalcFrobeniousNorm(const Matrix& matrix) {
     int norm = 0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
@@ -232,7 +232,7 @@ Matrix Matrix::rotateCounterClockwise() const{
 
 }
 
-static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
+int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
 int* ignoredColumnsMask) {
     int det = 0;
     int rowNum = matrix.getRowNum();
@@ -264,7 +264,7 @@ int* ignoredColumnsMask) {
     return det;
 }
 
-static int CalcDeterminant(const Matrix& matrix) {
+int CalcDeterminant(const Matrix& matrix) {
     int* ignoredColumnsMask = new int[matrix.getRowNum()]();
     int* ignoredRowsMask = new int[matrix.getColNum()]();
     matrix.isSquare();

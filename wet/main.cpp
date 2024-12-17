@@ -1,65 +1,81 @@
-// #include <iostream>
 // #include "Matrix.h"
 // #include "MataMvidia.h"
+// #include <iostream>
+
+// using namespace std;
+
+// void testMatrixOperations() {
+//     cout << "--- Testing Matrix Operations ---" << endl;
+    
+//     // Creating matrices
+//     Matrix m1(2, 2, 1); // 2x2 matrix filled with 1s
+//     Matrix m2(2, 2, 2); // 2x2 matrix filled with 2s
+
+//     cout << "Matrix m1:\n" << m1;
+//     cout << "Matrix m2:\n" << m2;
+
+//     // Addition
+//     Matrix m3 = m1 + m2;
+//     cout << "m1 + m2:\n" << m3;
+
+//     // Scalar multiplication
+//     Matrix m4 = m1 * 3;
+//     cout << "m1 * 3:\n" << m4;
+
+//     // Unary minus
+//     Matrix m5 = -m2;
+//     cout << "-m2:\n" << m5;
+
+//     // Transpose
+//     Matrix m6 = m2.transpose();
+//     cout << "Transpose of m2:\n" << m6;
+
+//     // Rotations
+//     cout << "Rotate m2 clockwise:\n" << m2.rotateClockwise();
+//     cout << "Rotate m2 counter-clockwise:\n" << m2.rotateCounterClockwise();
+
+//     // Equality check
+//     Matrix m7(2, 2, 2);
+//     if (m2 == m7)
+//         cout << "m2 and m7 are equal!" << endl;
+//     else
+//         cout << "m2 and m7 are NOT equal!" << endl;
+
+//     cout << "--- End of Matrix Operations ---\n" << endl;
+// }
+
+// void testMataMvidiaOperations() {
+//     cout << "--- Testing MataMvidia Operations ---" << endl;
+
+//     Matrix frame1(2, 2);
+//     Matrix frame2(2, 2);
+//     frame1(0, 0) = 1; frame1(0, 1) = 2;
+//     frame1(1, 0) = 3; frame1(1, 1) = 4;
+
+//     frame2(0, 0) = 5; frame2(0, 1) = 6;
+//     frame2(1, 0) = 7; frame2(1, 1) = 8;
+
+//     Matrix array[] = {frame1, frame2};
+
+//     MataMvidia movie("MataMatrix", "Baraa Egbaria", array, 2);
+//     cout << movie << endl;
+
+//     // Adding a new frame
+//     Matrix newFrame(2, 2, 9);
+//     movie += newFrame;
+//     cout << "After adding a new frame:\n" << movie;
+
+//     // Combining movies
+//     MataMvidia movie2 = movie + movie;
+//     cout << "Combined Movie:\n" << movie2;
+
+//     cout << "--- End of MataMvidia Operations ---\n" << endl;
+// }
 
 // int main() {
-//     // Test Matrix class
-//     std::cout << "--- Testing Matrix Class ---\n";
-
-//     // 1. Create and print matrices
-//     Matrix mat1(3, 3, 1); // 3x3 matrix filled with 1
-//     Matrix mat2(3, 3, 2); // 3x3 matrix filled with 2
-//     std::cout << "Matrix mat1:\n" << mat1 << std::endl;
-//     std::cout << "Matrix mat2:\n" << mat2 << std::endl;
-
-//     // 2. Matrix addition, subtraction, and scalar multiplication
-//     Matrix matSum = mat1 + mat2;
-//     std::cout << "mat1 + mat2:\n" << matSum;
-//     Matrix matDiff = mat2 - mat1;
-//     std::cout << "mat2 - mat1:\n" << matDiff;
-//     Matrix matScaled = mat1 * 5;
-//     std::cout << "mat1 * 5:\n" << matScaled;
-
-//     // 3. Matrix transpose and rotations
-//     Matrix matTranspose = mat1.transpose();
-//     std::cout << "Transpose of mat1:\n" << matTranspose;
-//     Matrix matClockwise = mat1.rotateClockwise();
-//     std::cout << "Clockwise rotation of mat1:\n" << matClockwise;
-//     Matrix matCounterClockwise = mat1.rotateCounterClockwise();
-//     std::cout << "Counter-clockwise rotation of mat1:\n" << matCounterClockwise;
-
-//     // 4. Matrix comparison
-//     std::cout << "mat1 == mat2: " << (mat1 == mat2 ? "True" : "False") << std::endl;
-//     std::cout << "mat1 != mat2: " << (mat1 != mat2 ? "True" : "False") << std::endl;
-
-//     // 5. Frobenius Norm
-//     std::cout << "Frobenius norm of mat1: " << Matrix::CalcProbeniousNorm(mat1) << std::endl;
-
-//     // 6. Determinant calculation (only for square matrices)
-//     std::cout << "Determinant of mat1: " << Matrix::CalcDeterminant(mat1) << std::endl;
-
-//     // Test MataMvidia class
-//     std::cout << "\n--- Testing MataMvidia Class ---\n";
-
-//     // 7. Create a film with frames
-//     Matrix frames[2] = { Matrix(2, 2, 1), Matrix(2, 2, 2) };
-//     MataMvidia film(2, "Matrix Adventure", "John Doe", frames);
-//     std::cout << film << std::endl;
-
-//     // 8. Add a new frame
-//     film += Matrix(2, 2, 3);
-//     std::cout << "After adding a new frame:\n" << film;
-
-//     MataMvidia film("Action Movie", "John Doe", frames, 2);  // Create a Film object
-
-//     // Output film information
-//     std::cout << "Film name: Action Movie" << std::endl;
-//     std::cout << "Author: John Doe" << std::endl;
-//     std::cout << "Film length: " << 2 << " frames" << std::endl;
-//     std::cout << "Frame 1:" << std::endl;
-//     std::cout << frames[0] << std::endl;
-//     std::cout << "Frame 2:" << std::endl;
-//     std::cout << frames[1] << std::endl;
-
+//     // Run tests
+//     testMatrixOperations();
+//     testMataMvidiaOperations();
+    
 //     return 0;
 // }
