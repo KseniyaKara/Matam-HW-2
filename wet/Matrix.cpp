@@ -6,7 +6,7 @@
 Matrix::Matrix(int rowNum, int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
-    int* matrix = new int[rowNum * colNum];
+    matrix = new int[rowNum * colNum];
     if (!matrix) {
         std::cout << "Memory allocation failed!" << std::endl;
     }
