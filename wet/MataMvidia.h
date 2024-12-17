@@ -17,5 +17,5 @@ class MataMvidia {
         MataMvidia& MataMvidia::operator+=(const MataMvidia& other);
         MataMvidia& MataMvidia::operator+=(const Matrix& other);
         MataMvidia MataMvidia::operator+(const MataMvidia& other);
-        friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
+        friend std::ostream& operator<<(std::ostream& os, const MataMvidia& film);
 };
