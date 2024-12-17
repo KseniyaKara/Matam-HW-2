@@ -21,12 +21,12 @@ MataMvidia::MataMvidia(const MataMvidia& other){
 }
 
 MataMvidia& MataMvidia::operator=(const MataMvidia& s){
-    filmLength = s.filmLength;
-    filmName = s.filmName;
-    authorName = s.authorName;
     if (this == &s){
         return *this;
     }
+    filmLength = s.filmLength;
+    filmName = s.filmName;
+    authorName = s.authorName;
     delete[] filmFrames;
     filmFrames = new Matrix[filmLength];
     for (int i = 0; i < filmLength; i++) {
