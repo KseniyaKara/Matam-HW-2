@@ -87,6 +87,7 @@ MataMvidia MataMvidia::operator+(const MataMvidia& other) {
         newFilm[i] = other.filmFrames[i];
     }
     MataMvidia resultFilm(filmName, authorName, newFilm, filmLength);
+    delete[] newFilm;
     return resultFilm;
 }
 
