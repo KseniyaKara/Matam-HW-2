@@ -48,17 +48,17 @@ Matrix& Matrix::operator=(const Matrix& s){
         matrix[i] = s.matrix[i];
     }
 }
-int Matrix::getRowNum() const{
+unsigned int Matrix::getRowNum() const{
     return rowNum;
 }
-int Matrix::getRowNum() {
+unsigned int Matrix::getRowNum() {
     return rowNum;
 }
 
-int Matrix::getColNum() const {
+unsigned int Matrix::getColNum() const {
     return colNum;
 }
-int Matrix::getColNum() {
+unsgned int Matrix::getColNum() {
     return colNum;
 }
 // void setColNum(int col) {
@@ -100,8 +100,8 @@ Matrix Matrix::operator-() const{
 
 Matrix& Matrix::operator+=(const Matrix& other){
     sizeMatch(other);
-    int matrixElementNum = rowNum * colNum;
-    for(int i = 0; i < matrixElementNum; ++i) {
+    unsigned int matrixElementNum = rowNum * colNum;
+    for(unsigned int i = 0; i < matrixElementNum; ++i) {
         matrix[i] += other.matrix[i]; 
     }
     return *this;
