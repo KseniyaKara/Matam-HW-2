@@ -33,6 +33,7 @@ MataMvidia& MataMvidia::operator=(const MataMvidia& s){
     for (unsigned i = 0; i < filmLength; i++) {
         filmFrames[i] = s.filmFrames[i];
     }
+    return *this;
 }
 
 MataMvidia::~MataMvidia() {
@@ -86,7 +87,7 @@ MataMvidia MataMvidia::operator+(const MataMvidia& other) {
     for (; i < other.filmLength; ++i) {
         newFilm[i] = other.filmFrames[i];
     }
-    MataMvidia resultFilm(filmName, authorName, newFilm, filmLength);
+    MataMvidia resultFilm(filmLength, filmName, authorName, newFilm);
     return resultFilm;
 }
 
