@@ -10,11 +10,14 @@ class Matrix{
         Matrix(const Matrix& other);
         Matrix& Matrix::operator=(const Matrix& s);
         ~Matrix();
+        int getRowNum() const;
         int getRowNum();
+        int getColNum() const;
         int getColNum();
-        void setColNum(int col);
-        void setRowNum(int row);
-        int* Matrix::operator()(int row, int col);///??
+        // void setColNum(int col);
+        // void setRowNum(int row);
+        int& Matrix::operator()(int row, int col);///??
+        const int& Matrix::operator()(int row, int col) const;
         bool Matrix::operator==(const Matrix& other);
-        bool Matrix::operator!=(const Matrix& other);/// can we write this line outside the class?
 };
+    bool operator!=(const Matrix& other);

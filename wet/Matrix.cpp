@@ -40,3 +40,22 @@ Matrix& Matrix::operator=(const Matrix& s){
         matrix[i] = s.matrix[i];
     }
 }
+int Matrix::getRowNum() const{
+    return rowNum;
+}
+int Matrix::getRowNum() {
+    return rowNum;
+}
+
+int Matrix::getColNum() const {
+    return colNum;
+}
+int Matrix::getColNum() {
+    return colNum;
+}
+// void setColNum(int col) {
+//
+// }
+// void setRowNum(int row) {
+//
+// }
