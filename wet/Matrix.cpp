@@ -193,7 +193,7 @@ static unsigned int CalcProbeniousNorm(const Matrix& matrix) {
 
 }
     
-Matrix& Transpose(Matrix& matrix) {
+Matrix Transpose(Matrix& matrix) {
     Matrix newMatrix(matrix.getColNum(), matrix.getRowNum(), 0);
     for (int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
@@ -206,8 +206,8 @@ Matrix& Transpose(Matrix& matrix) {
 static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
 int* ignoredColumnsMask) {
     int det = 0;
-    int rowNum = matrix.getRowNum();
-    int colNum = matrix.getColNum();
+    unsigned int rowNum = matrix.getRowNum();
+    unsigned int colNum = matrix.getColNum();
     int pivot = 0;
     int pivotSign = 0;
     if(rowNum == 2) {

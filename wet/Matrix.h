@@ -35,7 +35,7 @@ class Matrix{
         int* ignoredColumnsMask) ;
         static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col);
         static unsigned int CalcProbeniousNorm(const Matrix& matrix);
-        Matrix& Transpose(Matrix& matrix);
+        Matrix Transpose(Matrix& matrix);
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);
     Matrix operator*(const Matrix& matrix, int scalar);
