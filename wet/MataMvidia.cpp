@@ -89,7 +89,7 @@ MataMvidia MataMvidia::operator+(const MataMvidia& other) {
         newFilm[i] = other.filmFrames[i];
     }
     
-    MataMvidia resultFilm(filmName, authorName, newFilm, filmLength);
+    MataMvidia resultFilm(filmLength, filmName, authorName, newFilm);
     
     return resultFilm;
 }
@@ -103,5 +103,5 @@ std::ostream& operator<<(std::ostream& os, const MataMvidia& film) {
         os << "Frame " << i << ":" << film.filmFrames[i];
     }
     os << "-----End of Movie -----";
-    return;
+    return os;
 }
