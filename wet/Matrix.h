@@ -17,6 +17,6 @@ class Matrix{
         // void setColNum(int col);
         // void setRowNum(int row);
         const int& Matrix::operator()(int row, int col) const;
-        bool Matrix::operator==(const Matrix& other);
+        friend bool operator==(const Matrix& matrix, const Matrix& other);
 };
-    bool operator!=(const Matrix& other);
+    bool operator!=(const Matrix& matrix,const Matrix& other);

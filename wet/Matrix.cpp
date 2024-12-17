@@ -63,18 +63,21 @@ int Matrix::getColNum() {
 // }
 
 const int& Matrix::operator()(int row, int col) const{
-    return matrix[row * col + col];
+    return matrix(row * col + col);
 }
-bool Matrix::operator==(const Matrix& other) {
+ bool operator==(const Matrix& matrix, const Matrix& other){
     bool equal = true;
-    if (rowNum != other.rowNum || colNum != other.colNum) {
+    if (matrix.rowNum != other.rowNum || matrix.colNum != other.colNum) {
         exitWithError(MatamErrorType::UnmatchedSizes);
     }
-    for (int i = 0; i < rowNum*colNum; i++) {
-        if (matrix[i] != other.matrix[i]) {
+    for (int i = 0; i < other.rowNum*other.colNum; i++) {
+        if (matrix.matrix[i] != other.matrix[i]) {
             equal = false;
         }
     }
     return equal;
 }
 
+bool operator!=(const Matrix& matrix,const Matrix& other) {
+    return!(matrix==other);
+}
