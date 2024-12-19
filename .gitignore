@@ -8,3 +8,5 @@ wet/test.out
 wet/.vscode/settings.json
 
 wet/.vscode/
+
+*.Identifier
