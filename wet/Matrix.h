@@ -9,7 +9,7 @@ class Matrix{
     public:
         explicit Matrix(int rowNum = 0, int colNum = 0, int initValue = 0);
         Matrix(const Matrix& other);
-        Matrix& operator=(const Matrix& s);
+        Matrix& operator=(const Matrix& other);
         ~Matrix();
         friend bool operator==(const Matrix& matrix, const Matrix& other);
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);

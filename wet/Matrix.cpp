@@ -25,16 +25,17 @@ Matrix::~Matrix() {
     delete[] matrix;
 }
 
-Matrix& Matrix::operator=(const Matrix& s){
-    if (this == &s){
+Matrix& Matrix::operator=(const Matrix& other){
+    if (this == &other){
         return *this;
     }
-    rowNum = s.rowNum;
-    colNum = s.colNum;
+    sizeMatch(other);
+    rowNum = other.rowNum;
+    colNum = other.colNum;
     delete[] matrix;
     matrix = new int[rowNum * colNum];
     for (int i = 0; i < rowNum*colNum; i++) {
-        matrix[i] = s.matrix[i];
+        matrix[i] = other.matrix[i];
     }
 
     return *this;
