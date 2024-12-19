@@ -38,6 +38,8 @@ class Matrix{
             int col);
         static int CalcFrobeniousNorm(const Matrix& matrix);
         static void checkOrderBounds(int rowNum, int colNum);
+        void inBounds(int row, int col);
+        const void inBounds(int row, int col) const;
 
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);

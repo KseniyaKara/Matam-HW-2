@@ -10,6 +10,18 @@ void Matrix::checkOrderBounds(int rowNum, int colNum) {
     }
 }
 
+void Matrix::inBounds(int row, int col) {
+    if(row < 0 || row > rowNum - 1 || col < 0 || col > colNum - 1) {
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+}
+
+const void Matrix::inBounds(int row, int col) const {
+    if(row < 0 || row > rowNum - 1 || col < 0 || col > colNum - 1) {
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+}
+
 Matrix::Matrix(int rowNum, int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
@@ -162,10 +174,12 @@ Matrix& Matrix::operator*=(const Matrix& other) {
 }
 
 const int& Matrix::operator()(int row, int col) const{
+    inBounds(row, col);
     return matrix[row * colNum + col];
 }
 
 int& Matrix::operator()(int row, int col){
+    inBounds(row, col);
     return matrix[row * colNum + col];
 }
 
