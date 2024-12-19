@@ -172,9 +172,9 @@ int& Matrix::operator()(int row, int col){
  bool operator==(const Matrix& matrix, const Matrix& other){
     bool equal = true;
     if (matrix.rowNum != other.rowNum || matrix.colNum != other.colNum) {
-        exitWithError(MatamErrorType::UnmatchedSizes);
+        equal = false;
     }
-    for (int i = 0; i < other.rowNum*other.colNum; i++) {
+    for (int i = 0; i < other.rowNum * other.colNum; i++) {
         if (matrix.matrix[i] != other.matrix[i]) {
             equal = false;
         }
@@ -273,6 +273,9 @@ int Matrix::CalcDeterminant(const Matrix& matrix) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {
+    if (matrix.rowNum == 0 || matrix.colNum == 0) {
+        return os;
+    }
     for(int i = 0 ; i < matrix.rowNum; ++i) {
         os << "|";
         for(int j = 0 ; j < matrix.colNum; ++j) {
