@@ -1,5 +1,6 @@
 #include "MataMvidia.h"
 #include <iostream>
+#include "Utilities.h"
 
 MataMvidia::MataMvidia( const std::string& filmName,\
     const std::string& authorName, const Matrix* filmInput, int filmLength):
@@ -44,14 +45,14 @@ MataMvidia::~MataMvidia() {
 
 const Matrix& MataMvidia::operator[](int index) const {
     if (index >= filmLength || index < 0) {
-        std::cout<<("Bad index");
+        exitWithError(MatamErrorType::OutOfBounds);
     }
     return filmFrames[index];
 }
 
 Matrix& MataMvidia::operator[](int index) {
     if (index >= filmLength || index < 0) {
-        std::cout<<("Bad index");
+        exitWithError(MatamErrorType::OutOfBounds);
     }
     return filmFrames[index];
 }
