@@ -2,7 +2,7 @@
 #include <iostream>
 
 MataMvidia::MataMvidia( const std::string& filmName,\
-    const std::string& authorName, Matrix* filmInput, int filmLength):
+    const std::string& authorName, const Matrix* filmInput, int filmLength):
  filmName(filmName),
 authorName(authorName),
 filmLength(filmLength){

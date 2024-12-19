@@ -23,9 +23,9 @@ class Matrix{
         const int& operator()(int row, int col)const;
         Matrix& operator*=(int scalar);
         Matrix operator-() const;
-        Matrix& operator+=(const Matrix& other);//const
-        Matrix& operator-=(const Matrix& other);//const
-        Matrix& operator*=(const Matrix& other);//const
+        Matrix& operator+=(const Matrix& other);
+        Matrix& operator-=(const Matrix& other);
+        Matrix& operator*=(const Matrix& other);
         void sizeMatch(const Matrix& other) const;
         void isSquare() const;
         Matrix transpose() const;

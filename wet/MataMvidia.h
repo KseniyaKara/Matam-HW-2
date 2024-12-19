@@ -9,7 +9,7 @@ class MataMvidia {
         int filmLength;
     public:
         MataMvidia(const std::string& filmName = "", const std::string& authorName = "",\
-            /*const */Matrix* filmFramesOther = nullptr, int filmLength = 0);
+            const Matrix* filmFramesOther = nullptr, int filmLength = 0);
         MataMvidia(const MataMvidia& other);
         MataMvidia& operator=(const MataMvidia& s);
         ~MataMvidia();
