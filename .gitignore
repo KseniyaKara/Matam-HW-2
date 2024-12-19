@@ -4,3 +4,7 @@ CMakeLists.txt
 wet/Mvidia
 wet/testfile1
 wet/test.out
+
+wet/.vscode/settings.json
+
+wet/.vscode/
