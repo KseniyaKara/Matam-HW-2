@@ -3,9 +3,17 @@
 #include <cmath>
 #include "Utilities.h"
 
+
+void Matrix::checkOrderBounds(int rowNum, int colNum) {
+    if(rowNum < 0 || colNum < 0) {
+        exitWithError(MatamErrorType::OutOfBounds);
+    }
+}
+
 Matrix::Matrix(int rowNum, int colNum, int initValue):
 rowNum(rowNum),
 colNum(colNum){
+    checkOrderBounds(rowNum, colNum);
     matrix = new int[rowNum * colNum];
     for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = initValue;
@@ -15,6 +23,7 @@ colNum(colNum){
 Matrix::Matrix(const Matrix& other):
 rowNum(other.rowNum),
 colNum(other.colNum){
+    checkOrderBounds(rowNum, colNum);
     matrix = new int[rowNum * colNum];
     for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = other.matrix[i];
@@ -26,6 +35,7 @@ Matrix::~Matrix() {
 }
 
 Matrix& Matrix::operator=(const Matrix& other){
+    checkOrderBounds(other.rowNum, other.colNum);
     if (this == &other){
         return *this;
     }
@@ -120,7 +130,7 @@ Matrix operator-(const Matrix& matrix, const Matrix& other) {
     return Matrix(matrix) -= other;
 }
 
-int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
+int Matrix::CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col) {
     int n = matrix.getColNum();
     int result = 0;
     for(int k = 0; k < n; ++k) {
@@ -140,7 +150,7 @@ Matrix operator*(const Matrix& matrix, const Matrix& other) {
 
     for(int i = 0; i < m; ++i) {
         for(int j = 0; j < q; ++j) {
-            int value = CalcSingleElementMult(matrix, other, i, j);
+            int value = Matrix::CalcSingleElementMult(matrix, other, i, j);
             result(i, j) =  value;
         }   
     }
@@ -176,7 +186,7 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-int CalcFrobeniousNorm(const Matrix& matrix) {
+int Matrix::CalcFrobeniousNorm(const Matrix& matrix) {
     int norm = 0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
@@ -223,7 +233,7 @@ Matrix Matrix::rotateCounterClockwise() const{
     return rotated;
 }
 
-int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
+int Matrix::CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
 int* ignoredColumnsMask) {
     int det = 0;
     int rowNum = matrix.getRowNum();
@@ -248,18 +258,18 @@ int* ignoredColumnsMask) {
     pivot = pivotSign * matrix.getMatrix()[row * colNum + col];
     ignoredRowsMask[row] = 1;
     ignoredColumnsMask[col] = 1;
-    det += pivot * CalcDeterminantRec(matrix, (row + 1) % rowNum, (col + 1) * colNum, \
+    det += pivot * Matrix::CalcDeterminantRec(matrix, (row + 1) % rowNum, (col + 1) * colNum, \
     ignoredRowsMask, ignoredColumnsMask);
     ignoredColumnsMask[col] = 0;
     ignoredRowsMask[row] = 0;
     return det;
 }
 
-int CalcDeterminant(const Matrix& matrix) {
+int Matrix::CalcDeterminant(const Matrix& matrix) {
     int* ignoredColumnsMask = new int[matrix.getRowNum()]();
     int* ignoredRowsMask = new int[matrix.getColNum()]();
     matrix.isSquare();
-    return CalcDeterminantRec(matrix, 0, 0, ignoredRowsMask, ignoredColumnsMask);
+    return Matrix::CalcDeterminantRec(matrix, 0, 0, ignoredRowsMask, ignoredColumnsMask);
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix) {

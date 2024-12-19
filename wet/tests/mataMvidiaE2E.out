@@ -49,3 +49,235 @@ a+b:
 1
 a.transpose!=a.counterClockSize:
 1
+m
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+-----End of Movie-----
+
+z
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+-----End of Movie-----
+
+z
+Movie Name: malibu
+Author: adi
+
+Frame 0:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 1:
+|1|0|2|
+|3|1|0|
+
+Frame 2:
+|3|1|
+|1|0|
+|0|2|
+
+-----End of Movie-----
+
+m[1]= -b
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+m+x
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+-----End of Movie-----
+
+m+=a*e
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+Frame 5:
+|5|7|
+|2|0|
+|7|3|
+
+-----End of Movie-----
+
+m+=x
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+Frame 5:
+|5|7|
+|2|0|
+|7|3|
+
+Frame 6:
+
+Frame 7:
+
+Frame 8:
+
+-----End of Movie-----
+
+m
+Movie Name: Matrix
+Author: linoy
+
+Frame 0:
+|1|2|3|
+|0|2|0|
+|1|4|1|
+
+Frame 1:
+|0|-2|-2|
+|2|0|4|
+|2|-4|0|
+
+Frame 2:
+|-1|4|1|
+|2|2|-2|
+|1|2|5|
+
+Frame 3:
+|1|0|2|
+|3|1|0|
+
+Frame 4:
+|3|1|
+|1|0|
+|0|2|
+
+Frame 5:
+|5|7|
+|2|0|
+|7|3|
+
+Frame 6:
+
+Frame 7:
+
+Frame 8:
+
+-----End of Movie-----
+
