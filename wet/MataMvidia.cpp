@@ -42,14 +42,14 @@ MataMvidia::~MataMvidia() {
     delete[] filmFrames;
 }
 
-const Matrix MataMvidia::operator[](int index) const {
+const Matrix& MataMvidia::operator[](int index) const {
     if (index >= filmLength || index < 0) {
         std::cout<<("Bad index");
     }
     return filmFrames[index];
 }
 
-Matrix MataMvidia::operator[](int index) {
+Matrix& MataMvidia::operator[](int index) {
     if (index >= filmLength || index < 0) {
         std::cout<<("Bad index");
     }
