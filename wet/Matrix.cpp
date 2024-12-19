@@ -29,12 +29,13 @@ Matrix& Matrix::operator=(const Matrix& other){
     if (this == &other){
         return *this;
     }
-    sizeMatch(other);
     rowNum = other.rowNum;
     colNum = other.colNum;
-    delete[] matrix;
+    if(matrix != nullptr){
+        delete[] matrix;
+    }
     matrix = new int[rowNum * colNum];
-    for (int i = 0; i < rowNum*colNum; i++) {
+    for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = other.matrix[i];
     }
 
