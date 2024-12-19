@@ -213,24 +213,24 @@ void swap(int& a, int& b) {
     b = temp;
 }
 
-Matrix Matrix::rotateClockwise() const{
-    Matrix rotated = (*this).transpose();
-    for (int j = 0; j < colNum; ++j) {
-        for (int i = 0; i < rowNum / 2; ++i) {
-            swap((rotated)(i, j), (rotated)(rowNum -1 - i, j));
+Matrix Matrix::rotateClockwise() const {
+    Matrix rotated(colNum, rowNum);
+    for (int i = 0; i < rowNum; ++i) {
+        for (int j = 0; j < colNum; ++j) {
+            rotated(j, rowNum -i -1) = (*this)(i, j);
         }
     }
     return rotated;
 }
 
-Matrix Matrix::rotateCounterClockwise() const{
-    Matrix rotated = (*this).transpose();
+Matrix Matrix::rotateCounterClockwise() const {
+    Matrix rotated(*this); 
     for (int i = 0; i < rotated.rowNum; ++i) {
         for (int j = 0; j < rotated.colNum / 2; ++j) {
-            swap(rotated(i, j), rotated(i, rotated.colNum - j - 1));
+            swap(rotated(i, j), rotated(i, rotated.colNum -1 - j));
         }
     }
-    return rotated;
+    return rotated.transpose();
 }
 
 int Matrix::CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
