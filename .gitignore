@@ -1,2 +1,12 @@
+/cmake-build-debug
+/dry
+CMakeLists.txt
+wet/Mvidia
+wet/testfile1
+wet/test.out
 
-dry/dry
+wet/.vscode/settings.json
+
+wet/.vscode/
+
+*.Identifier

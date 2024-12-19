@@ -2,40 +2,49 @@
 #include <ostream>
 
 class Matrix{
-    unsigned int rowNum = 0;
-    unsigned int colNum = 0;
-    int* matrix = nullptr;//const?
+    int rowNum = 0;
+    int colNum = 0;
+    int* matrix = nullptr;
     
     public:
-        explicit Matrix(unsigned int rowNum = 0, unsigned int colNum = 0, int initValue = 0);///do we need explicit?
+        explicit Matrix(int rowNum = 0, int colNum = 0, int initValue = 0);
         Matrix(const Matrix& other);
-        Matrix& Matrix::operator=(const Matrix& s);
+        Matrix& operator=(const Matrix& other);
         ~Matrix();
+        friend bool operator==(const Matrix& matrix, const Matrix& other);
+        friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
         int getRowNum() const;
         int getRowNum();
         int getColNum() const;
         int getColNum();
-        // void setColNum(int col);
-        // void setRowNum(int row);
-        const int& Matrix::operator()(int row, int col) const;
-        friend bool operator==(const Matrix& matrix, const Matrix& other);
+        int* getMatrix() const;
+        int* getMatrix();
+        int& operator()(int row, int col) ;
+        const int& operator()(int row, int col)const;
         Matrix& operator*=(int scalar);
         Matrix operator-() const;
         Matrix& operator+=(const Matrix& other);
         Matrix& operator-=(const Matrix& other);
         Matrix& operator*=(const Matrix& other);
         void sizeMatch(const Matrix& other) const;
-        friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
-        void Matrix::isSquare() const;
-        static int CalcDeterminant(const Matrix matrix);
-        static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
-        int* ignoredColumnsMask) ;
-        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other);
+        void isSquare() const;
+        Matrix transpose() const;
+        Matrix rotateClockwise() const;
+        Matrix rotateCounterClockwise() const;
+        static int CalcDeterminant(const Matrix& matrix);
+        static int CalcDeterminantRec(const Matrix& matrix, int row, int col,\
+        int* ignoredRowsMask, int* ignoredColumnsMask) ;
+        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
+            int col);
+        static int CalcFrobeniousNorm(const Matrix& matrix);
+        static void checkOrderBounds(int rowNum, int colNum);
+        void inBounds(int row, int col);
+        const void inBounds(int row, int col) const;
+
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);
     Matrix operator*(const Matrix& matrix, int scalar);
+    Matrix operator*(int scalar, const Matrix& matrix);
     Matrix operator+(const Matrix& matrix, const Matrix& other);
     Matrix operator-(const Matrix& matrix, const Matrix& other);
     Matrix operator*(const Matrix& matrix, const Matrix& other);
-    unsigned int normFrobenious(const Matrix& matrix);
-    Matrix& Transpose(Matrix& matrix);
