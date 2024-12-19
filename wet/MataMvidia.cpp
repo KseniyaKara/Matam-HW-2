@@ -63,8 +63,8 @@ MataMvidia& MataMvidia::operator+=(const MataMvidia& other) {
     for (; i < filmLength; ++i) {
         newFilm[i] = filmFrames[i];
     }
-    for (; i < other.filmLength; ++i) {
-        newFilm[i] = other.filmFrames[i];
+    for (int j = 0; j < other.filmLength; ++i, ++j) {
+        newFilm[i] = other.filmFrames[j];
     }
     delete[] filmFrames;
     filmFrames = newFilm;
@@ -87,15 +87,16 @@ MataMvidia& MataMvidia::operator+=(const Matrix& matrix) {
 }
 
 MataMvidia MataMvidia::operator+(const MataMvidia& other) {
+    int newFilmLength = filmLength + other.filmLength;
     Matrix* newFilm = new Matrix[filmLength + other.filmLength];
     int i = 0;
     for (; i < filmLength; ++i) {
         newFilm[i] = filmFrames[i];
     }
-    for (; i < other.filmLength; ++i) {
-        newFilm[i] = other.filmFrames[i];
+    for (int j = 0; j < other.filmLength; ++i, ++j) {
+        newFilm[i] = other.filmFrames[j];
     }
-    MataMvidia resultFilm(filmName, authorName, newFilm, filmLength);
+    MataMvidia resultFilm(filmName, authorName, newFilm, newFilmLength);
     delete[] newFilm;
     return resultFilm;
 }
