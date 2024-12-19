@@ -8,7 +8,8 @@ class MataMvidia {
         Matrix* filmFrames = nullptr;
         int filmLength;
     public:
-        MataMvidia(const std::string& filmName = "", const std::string& authorName = "",Matrix* filmFramesOther = nullptr, int filmLength = 0);
+        MataMvidia(const std::string& filmName = "", const std::string& authorName = "",\
+            /*const */Matrix* filmFramesOther = nullptr, int filmLength = 0);
         MataMvidia(const MataMvidia& other);
         MataMvidia& operator=(const MataMvidia& s);
         ~MataMvidia();

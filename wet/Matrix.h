@@ -23,18 +23,19 @@ class Matrix{
         const int& operator()(int row, int col)const;
         Matrix& operator*=(int scalar);
         Matrix operator-() const;
-        Matrix& operator+=(const Matrix& other);
-        Matrix& operator-=(const Matrix& other);
-        Matrix& operator*=(const Matrix& other);
+        Matrix& operator+=(const Matrix& other);//const
+        Matrix& operator-=(const Matrix& other);//const
+        Matrix& operator*=(const Matrix& other);//const
         void sizeMatch(const Matrix& other) const;
         void isSquare() const;
         Matrix transpose() const;
         Matrix rotateClockwise() const;
         Matrix rotateCounterClockwise() const;
         static int CalcDeterminant(const Matrix& matrix);
-        static int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
-        int* ignoredColumnsMask) ;
-        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, int col);
+        static int CalcDeterminantRec(const Matrix& matrix, int row, int col,\
+        int* ignoredRowsMask, int* ignoredColumnsMask) ;
+        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
+            int col);
         static int CalcFrobeniousNorm(const Matrix& matrix);
 
 };
