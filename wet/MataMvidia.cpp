@@ -39,7 +39,13 @@ MataMvidia::~MataMvidia() {
     delete[] filmFrames;
 }
 
-// const Matrix& operator[](int index) const{}
+const Matrix MataMvidia:::operator[](int index) const {
+    if (index >= filmLength || index < 0) {
+        std::cout<<("Bad index");
+    }
+    return filmFrames[index];
+}
+
 Matrix MataMvidia::operator[](int index) {
     if (index >= filmLength || index < 0) {
         std::cout<<("Bad index");
@@ -90,7 +96,6 @@ MataMvidia MataMvidia::operator+(const MataMvidia& other) {
     delete[] newFilm;
     return resultFilm;
 }
-
 
 std::ostream& operator<<(std::ostream& os, const MataMvidia& film) {
     os << "Movie Name: " << film.filmName << std::endl;

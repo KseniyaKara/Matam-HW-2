@@ -39,9 +39,11 @@ Matrix& Matrix::operator=(const Matrix& s){
 
     return *this;
 }
+
 int Matrix::getRowNum() const{
     return rowNum;
 }
+
 int Matrix::getRowNum() {
     return rowNum;
 }
@@ -49,15 +51,10 @@ int Matrix::getRowNum() {
 int Matrix::getColNum() const {
     return colNum;
 }
+
 int Matrix::getColNum() {
     return colNum;
 }
-// void setColNum(int col) {
-//
-// }
-// void setRowNum(int row) {
-//
-// }
 
 int* Matrix::getMatrix() const{
     return matrix;
@@ -186,7 +183,6 @@ int CalcFrobeniousNorm(const Matrix& matrix) {
     }
     norm = sqrt(norm);
     return norm;
-
 }
     
 Matrix Matrix::transpose() const{
@@ -223,7 +219,6 @@ Matrix Matrix::rotateCounterClockwise() const{
         }
     }
     return rotated;
-
 }
 
 int CalcDeterminantRec(const Matrix& matrix, int row, int col, int* ignoredRowsMask, \
