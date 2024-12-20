@@ -200,13 +200,13 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
 }
 
 double Matrix::CalcFrobeniousNorm(const Matrix& matrix) {
-    int norm = 0;
+    double norm = 0.0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
             norm += matrix(i,j) * matrix(j,j);
         }
     }
-    norm = sqrt((double)norm);
+    norm = sqrt(norm);
     return norm;
 }
     
