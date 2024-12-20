@@ -60,7 +60,6 @@ Matrix& Matrix::operator=(const Matrix& other){
     for (int i = 0; i < rowNum * colNum; i++) {
         matrix[i] = other.matrix[i];
     }
-
     return *this;
 }
 
@@ -200,14 +199,14 @@ bool operator!=(const Matrix& matrix,const Matrix& other) {
     return!(matrix==other);
 }
 
-int Matrix::CalcFrobeniousNorm(const Matrix& matrix) {
+double Matrix::CalcFrobeniousNorm(const Matrix& matrix) {
     int norm = 0;
     for(int i = 0; i < matrix.getRowNum() ; ++i) {
         for (int j = 0; j < matrix.getColNum(); ++j) {
             norm += matrix(i,j) * matrix(j,j);
         }
     }
-    norm = sqrt(norm);
+    norm = sqrt((double)norm);
     return norm;
 }
     

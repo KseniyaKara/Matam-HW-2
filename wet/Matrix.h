@@ -36,7 +36,7 @@ class Matrix{
         int* ignoredRowsMask, int* ignoredColumnsMask) ;
         static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
             int col);
-        static int CalcFrobeniousNorm(const Matrix& matrix);
+        static double CalcFrobeniousNorm(const Matrix& matrix);
         static void checkOrderBounds(int rowNum, int colNum);
         void inBounds(int row, int col);
         const void inBounds(int row, int col) const;
