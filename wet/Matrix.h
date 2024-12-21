@@ -32,11 +32,11 @@ class Matrix{
         Matrix rotateClockwise() const;
         Matrix rotateCounterClockwise() const;
         static int CalcDeterminant(const Matrix& matrix);
-        static int CalcDeterminantRec(const Matrix& matrix, int row, int col,\
-        int* ignoredRowsMask, int* ignoredColumnsMask) ;
+        static int CalcDeterminantRec(const Matrix& matrix, int* ignoredRowsMask,\
+         int* ignoredColumnsMask, int size) ;
         static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
             int col);
-        static int CalcFrobeniousNorm(const Matrix& matrix);
+        static double CalcFrobeniousNorm(const Matrix& matrix);
         static void checkOrderBounds(int rowNum, int colNum);
         void inBounds(int row, int col);
         const void inBounds(int row, int col) const;
