@@ -247,42 +247,43 @@ Matrix Matrix::rotateCounterClockwise() const {
 }
 
 int Matrix::CalcDeterminantRec(const Matrix& matrix, int* ignoredRowsMask, int* ignoredColumnsMask, int size) {
+    int rowNum = matrix.getRowNum();
+    int colNum = matrix.getColNum();
     if (size == 2) {
-        int* matrixArray = matrix.getMatrix();
-        int detElements[4]; 
+        int detElements[4];
         int count = 0;
-        for (int i = 0; i < matrix.getRowNum(); ++i) {
-            for (int j = 0; j < matrix.getColNum(); ++j) {
-                if (!ignoredRowsMask[i] && !ignoredColumnsMask[j]) {
-                    detElements[count] = matrixArray[i * matrix.getColNum() + j];
-                    ++count;
-                }
+        for (int i = 0; i < rowNum; ++i) {
+            if (ignoredRowsMask[i]) continue;
+            for (int j = 0; j < colNum; ++j) {
+                if (ignoredColumnsMask[j]) continue;
+                detElements[count++] = matrix.getMatrix()[i * colNum + j];
             }
         }
         return detElements[0] * detElements[3] - detElements[2] * detElements[1];
     }
     int det = 0;
-    int pivotSign = 1;
-    for (int col = 0; col < matrix.getColNum(); ++col) {
-        if (!ignoredColumnsMask[col]) {
-            int pivot = pivotSign * matrix.getMatrix()[col];
-            ignoredColumnsMask[col] = 1;
-            det += pivot * CalcDeterminantRec(matrix, ignoredRowsMask + 1, ignoredColumnsMask, size - 1);
-            ignoredColumnsMask[col] = 0;
-            pivotSign *= -1;
-        }
+    for (int col = 0; col < colNum; ++col) {
+        if (ignoredColumnsMask[col]) continue;
+        int row = 0;
+        while (ignoredRowsMask[row] && row < rowNum) ++row;
+        int pivot = ((row + col) % 2 == 0 ? 1 : -1) * matrix.getMatrix()[row * colNum + col];
+        ignoredColumnsMask[col] = 1;
+        ignoredRowsMask[row] = 1;
+        det += pivot * CalcDeterminantRec(matrix, ignoredRowsMask, ignoredColumnsMask, size - 1);
+        ignoredColumnsMask[col] = 0;
+        ignoredRowsMask[row] = 0;
     }
     return det;
 }
 
 int Matrix::CalcDeterminant(const Matrix& matrix) {
+    int* ignoredColumnsMask = new int[matrix.getRowNum()]();
+    int* ignoredRowsMask = new int[matrix.getColNum()]();
     matrix.isSquare();
-    int size = matrix.getRowNum();
-    int* ignoredRowsMask = new int[size]();
-    int* ignoredColumnsMask = new int[size]();
-    int det = CalcDeterminantRec(matrix, ignoredRowsMask, ignoredColumnsMask, size);
-    delete[] ignoredRowsMask;
+    int det = Matrix::CalcDeterminantRec(matrix, ignoredRowsMask, ignoredColumnsMask, \
+     matrix.getColNum());
     delete[] ignoredColumnsMask;
+    delete[] ignoredRowsMask;
     return det;
 }
 
