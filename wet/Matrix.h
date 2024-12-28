@@ -5,7 +5,14 @@ class Matrix{
     int rowNum = 0;
     int colNum = 0;
     int* matrix = nullptr;
-    
+    void sizeMatch(const Matrix& other) const;
+    void isSquare() const;
+    static int CalcDeterminantRec(const Matrix& matrix, int* ignoredRowsMask, \
+    int* ignoredColumnsMask, int size);
+    static void checkOrderBounds(int rowNum, int colNum);
+    void inBounds(int row, int col);
+    const void inBounds(int row, int col) const;
+
     public:
         explicit Matrix(int rowNum = 0, int colNum = 0, int initValue = 0);
         Matrix(const Matrix& other);
@@ -26,21 +33,13 @@ class Matrix{
         Matrix& operator+=(const Matrix& other);
         Matrix& operator-=(const Matrix& other);
         Matrix& operator*=(const Matrix& other);
-        void sizeMatch(const Matrix& other) const;
-        void isSquare() const;
         Matrix transpose() const;
         Matrix rotateClockwise() const;
         Matrix rotateCounterClockwise() const;
         static int CalcDeterminant(const Matrix& matrix);
-        static int CalcDeterminantRec(const Matrix& matrix, int* ignoredRowsMask, \
-        int* ignoredColumnsMask, int size) ;
-        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
-            int col);
         static double CalcFrobeniousNorm(const Matrix& matrix);
-        static void checkOrderBounds(int rowNum, int colNum);
-        void inBounds(int row, int col);
-        const void inBounds(int row, int col) const;
-
+        static int CalcSingleElementMult(const Matrix& matrix, const Matrix& other, int row, \
+        int col);
 };
     bool operator!=(const Matrix& matrix,const Matrix& other);
     Matrix operator*(const Matrix& matrix, int scalar);

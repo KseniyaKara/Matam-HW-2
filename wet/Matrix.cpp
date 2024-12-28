@@ -3,7 +3,6 @@
 #include <cmath>
 #include "Utilities.h"
 
-
 void Matrix::checkOrderBounds(int rowNum, int colNum) {
     if(rowNum < 0 || colNum < 0) {
         exitWithError(MatamErrorType::OutOfBounds);
